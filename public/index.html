@@ -3,21 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>To-Do List</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/bundle.js"></script>
   </head>
   <body>
     <div id="app">
-      <div>
-        <input type="text" v-model="newItem">
-        <input type="radio" name="priority" v-model="newPriority" value="high">High
-        <input type="radio" name="priority" v-model="newPriority" value="medium">Medium
-        <input type="radio" name="priority" v-model="newPriority" value="low">Low
-        <button v-on:click="addToList">Save Item</button>
+      <div class="newItem">
+        <span>
+          <button v-on:click="addToList"><i class="fas fa-plus"></i></button>
+          <input class="text" type="text" placeholder="Add a to-do..." v-model="newItem">
+        </span>
+      </div>
+      <div class="radio">
+        <span><input type="radio" name="priority" v-model="newPriority" value="high" required>High
+        <input type="radio" name="priority" v-model="newPriority" value="low" checked>Low</span>
       </div>
       <ul>
-        <li v-for="todo in todos" v-bind:class="todo.priority">
-          {{ todo.name }}
+        <li v-for="(todo, index) in todos" v-bind:class="todo.priority">
+          <span>
+            <input type="checkbox">
+            {{ todo.name }}
+            <input class="star" type="checkbox" v-bind:checked="todo.priority === 'high' ? true : false" v-on:click="setPriority(index)">
+          </span>
         </li>
       </ul>
     </div>

@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
         this.todos.push({name: this.newItem, priority: this.newPriority});
         this.newItem = "";
         this.newPriority = "";
+      },
+      setPriority: function (index) {
+        this.todos[index].priority = this.todos[index].priority === "low" ? "high" : "low";
       }
     }
   });
