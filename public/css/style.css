@@ -1,21 +1,28 @@
 body {
-  display: flex;
   position: relative;
   background-color: #A9A9A9;
 }
 
-#app {
+.border {
   background: linear-gradient(to right, #9ECBAC, #F9E4AB);
-  flex-direction: column;
   position: absolute;
-  margin: auto;
-  width: 300px;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 0);
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
-  padding: 20px;
   border: 1px solid #000000;
+  padding: 20px;
+}
+
+h3 {
+  text-align: center;
+  margin: 0;
+}
+
+#app {
+  width: 300px;
+  padding: 20px;
 }
 
 ul {
@@ -47,9 +54,13 @@ button {
   font-size: 16px;
 }
 
+.list {
+  max-height: 400px;
+  overflow: scroll;
+}
+
 .radio {
   margin-bottom: 20px;
-  justify-content: center;
 }
 
 .newItem {
@@ -57,7 +68,6 @@ button {
   border-radius: 10px;
   padding: 5px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -88,4 +98,14 @@ button {
 .fa-plus {
   color: #FFFFFF;
   cursor: pointer;
+}
+
+.completed {
+  background: linear-gradient(to right, #78B393, #8EBA8F);
+  color: #FFFFFF;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 5px;
+  white-space: nowrap;
+  width: min-content;
 }

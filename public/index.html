@@ -8,26 +8,45 @@
     <script src="./js/bundle.js"></script>
   </head>
   <body>
-    <div id="app">
-      <div class="newItem">
-        <span>
-          <button v-on:click="addToList"><i class="fas fa-plus"></i></button>
-          <input class="text" type="text" placeholder="Add a to-do..." v-model="newItem">
-        </span>
+    <div class="border">
+      <h3>Everlist</h3>
+      <div id="app">
+        <form v-on:submit.prevent="addToList">
+          <div class="newItem">
+            <span>
+              <button type="submit"><i class="fas fa-plus"></i></button>
+              <input class="text" type="text" placeholder="Add a to-do..." v-model="newItem" required>
+            </span>
+          </div>
+          <div class="radio">
+            <span><input type="radio" name="priority" v-model="newPriority" value="high" required>High
+              <input type="radio" name="priority" v-model="newPriority" value="low">Low</span>
+          </div>
+        </form>
+        <div class="list">
+          <ul>
+            <li v-for="(todo, index) in todos" v-if="!todo.completed" v-bind:class="todo.priority">
+              <span>
+                <input type="checkbox" v-on:click="setCompleted(index)">
+                {{ todo.name }}
+                <input class="star" type="checkbox" v-bind:checked="todo.priority === 'high' ? true : false" v-on:click="setPriority(index)">
+              </span>
+            </li>
+          </ul>
+          <div class="completed">
+            Show completed to dos
+          </div>
+          <ul>
+            <li v-for="(todo, index) in todos" v-if="todo.completed" v-bind:class="todo.priority">
+              <span>
+                <input type="checkbox" v-on:click="setCompleted(index)" checked>
+                {{ todo.name }}
+                <input class="star" type="checkbox" v-bind:checked="todo.priority === 'high' ? true : false" v-on:click="setPriority(index)">
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="radio">
-        <span><input type="radio" name="priority" v-model="newPriority" value="high" required>High
-        <input type="radio" name="priority" v-model="newPriority" value="low" checked>Low</span>
-      </div>
-      <ul>
-        <li v-for="(todo, index) in todos" v-bind:class="todo.priority">
-          <span>
-            <input type="checkbox">
-            {{ todo.name }}
-            <input class="star" type="checkbox" v-bind:checked="todo.priority === 'high' ? true : false" v-on:click="setPriority(index)">
-          </span>
-        </li>
-      </ul>
     </div>
   </body>
 </html>
