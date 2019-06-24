@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         {name: "Buy lotto ticket", priority: "low", completed: false}
       ],
       newItem: "",
-      newPriority: "",
+      newPriority: "low",
+      newPriorityCheckbox: false
     },
     methods: {
       addToList: function () {
@@ -29,13 +30,22 @@ document.addEventListener("DOMContentLoaded", () => {
           completed: false
         });
         this.newItem = "";
-        this.newPriority = "";
+        this.newPriority = "low";
+        this.newPriorityCheckbox = false;
       },
       setPriority: function (index) {
         this.todos[index].priority = this.todos[index].priority === "low" ? "high" : "low";
       },
       setCompleted: function (index) {
         this.todos[index].completed = this.todos[index].completed === true ? false : true;
+      },
+      setNewPriorityCheckbox: function () {
+        this.newPriorityCheckbox = this.newPriorityCheckbox === false ? true : false;
+        this.newPriority = this.newPriorityCheckbox ? "high" : "low";
+      },
+      setNewPriorityRadio: function (priority) {
+        this.newPriority = priority;
+        this.newPriorityCheckbox = priority === "high" ? true : false;
       }
     }
   });

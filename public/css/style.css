@@ -13,6 +13,7 @@ body {
   border-radius: 10px;
   border: 1px solid #000000;
   padding: 20px;
+  justify-content: center;
 }
 
 h3 {
@@ -61,14 +62,18 @@ button {
 
 .radio {
   margin-bottom: 20px;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+  white-space: nowrap;
 }
 
 .newItem {
   background: linear-gradient(to right, #78B393, #8EBA8F);
   border-radius: 10px;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .star {
@@ -108,4 +113,6 @@ button {
   padding: 5px;
   white-space: nowrap;
   width: min-content;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
 }

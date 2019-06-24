@@ -16,11 +16,15 @@
             <span>
               <button type="submit"><i class="fas fa-plus"></i></button>
               <input class="text" type="text" placeholder="Add a to-do..." v-model="newItem" required>
+              <input class="star" type="checkbox" v-on:click="setNewPriorityCheckbox" v-bind:checked="newPriorityCheckbox">
             </span>
           </div>
           <div class="radio">
-            <span><input type="radio" name="priority" v-model="newPriority" value="high" required>High
-              <input type="radio" name="priority" v-model="newPriority" value="low">Low</span>
+            <span>
+              Priority:
+              <input type="radio" name="priority" v-model="newPriority" value="high" required v-bind:checked="newPriorityCheckbox" v-on:click="setNewPriorityRadio('high')">High
+              <input type="radio" name="priority" v-model="newPriority" value="low" v-on:click="setNewPriorityRadio('low')">Low
+            </span>
           </div>
         </form>
         <div class="list">
